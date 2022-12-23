@@ -1,55 +1,52 @@
+
+
 import java.io.*;
 import java.util.*;
+
+
 public class PhonebookApp{
 public static void main(String[]args)throws IOException{
 
 	try {
-			ArrayList<PhonebookEntry> phonebook = new ArrayList<PhonebookEntry>();
-			File file = new File("phonebook.text");
+			// store all info into a Arraylist of PhonebookEntry type
+			ArrayList<PhonebookEntry> all_info = new ArrayList<PhonebookEntry>();
+			File file = new File("phonebook.txt");
 			Scanner scanner = new Scanner(file);
-			Phonebook pb;
-			
-			while(scanner.hasNext()){
-				//CHANGE TO STORE INTO MAP
-				//lines into a whole Array(containing all the names and phonebooks)
-				PhonebookEntry one_person = PhonebookEntry.read(scanner);
-				//all info are stored into the phonebook object
-				phonebook.add(one_person);
 
-			}
-			//stores all the information into a phonebook that is a Map for each person(Name and phonenumbers)
-			pb = new Phonebook(phonebook);
+//			System.out.println(all_info);
+////[David·Arnow·'s·phone·numbers:·[cell,·(345)678-9012,·work,·(324)564-0987,·fax,·(987)234-9823,·home,·(234)567-8901,·work,·(243)123-6574,·mobile,·(123)456-7890],·Keith·Harrow·'s·phone·numbers:·[cell,·(345)678-9012,·work,·(324)564-0987,·fax,·(987)234-9823,·home,·(234)567-8901,·work,·(243)123-6574,·mobile,·(123)456-7890],·Jackie·Jones·'s·phone·numbers:·[cell,·(345)678-9012,·work,·(324)564-0987,·fax,·(987)234-9823,·home,·(234)567-8901,·work,·(243)123-6574,·mobile,·(123)456-7890]]↵
+
+			
 			Scanner keyboard = new Scanner(System.in);
-			
-			String ln, fn, pn;
 
-			if(!(keyboard.hasNext())){
-					throw new FileNotFoundException("*** IOException *** "+file.toString()+" (No such file or directory)");	
-			}
 			System.out.print("lookup, quit (l/q)? ");
 			String input = keyboard.next();
 			while(input.charAt(0) !='q'){
+				String ln, fn, pn;
 				if (input.charAt(0) == 'l'){
 					System.out.print("last name? ");
 					ln = keyboard.next();
 					System.out.print("first name? ");
 					fn = keyboard.next();
 					Name name = new Name(ln, fn);
-				
-					Name valid_name = pb.lookup(phonebook, name);
-					
-//					System.out.print(Phonebook.toString(pb,input, name));
+					Phonebook phonebook = new Phonebook(scanner);
+//					System.out.println(phonebook.toString());
+					//THE PROGRAM DIDN'T TOUCH THE FOLLOWING LINE
+					if(phonebook.lookup(name)) {
+//						System.out.println(name + " 's phone numbers: " + phonebook.toString());
+					}
+					else {
+				          System.out.println("-- Name not found");
+					}
 				}
 				input = keyboard.next();
-			
-			System.out.println();
-			System.out.print("lookup, quit (l/q)? ");	
+				System.out.println();
+				System.out.print("lookup, quit (l/q)? ");	
 			
 			}	
-		}catch(FileNotFoundException Fe){
-		System.out.println(Fe.getMessage());
+		
 		}catch(Exception e){
-			System.out.println(e.getMessage());
+			System.out.println("all exception" + e.getMessage());
 		}
 
 }
