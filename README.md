@@ -3,4 +3,4 @@
 
 
 ## Purpose
-* Practice OOP and Collection in Java
+* Practice OOP and Collection(ArrayList and Map) in Java
