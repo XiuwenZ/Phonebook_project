@@ -1,9 +1,5 @@
-
-
 import java.io.*;
 import java.util.*;
-
-
 
 public class PhonebookApp{
 public static void main(String[]args)throws IOException{
@@ -16,8 +12,8 @@ public static void main(String[]args)throws IOException{
 
 			System.out.print("lookup, quit (l/q)? ");
 			String input = keyboard.next();
+			String ln, fn;
 			while(input.charAt(0) !='q'){
-				String ln, fn, pn;
 				if (input.charAt(0) == 'l'){
 					System.out.print("last name? ");
 					ln = keyboard.next();
@@ -39,7 +35,9 @@ public static void main(String[]args)throws IOException{
 				System.out.print("lookup, quit (l/q)? ");	
 			
 			}	
-		
+		scanner.close();
+		keyboard.close();
+			
 		}catch(Exception e){
 			System.out.println("all exception" + e.getMessage());
 		}
