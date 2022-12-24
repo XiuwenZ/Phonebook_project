@@ -1,31 +1,23 @@
-class Name{
-	public Name(String last, String first) {
-		this.last = last;
-		this.first = first;
+
+class PhoneNumber{
+	private String number;
+	
+	public PhoneNumber(String phoneNum){
+		this.number = phoneNum;
 	}
 	
-	public Name (String first) {this("", first);}
-	
-	public String getFormal() {return first + " " + last;} 
-			
-	public String getOfficial() {
-			return last + "," + first;
+	public String toString(){
+		return number;
 	}
 	
-	public boolean equals (Name other) {return first.equals(other.first) && last.equals(other.last);}
-			
-	public String toString() {return first + " " + last;}
-			
-	public static Name read (Scanner scanner) {
-			if (!scanner.hasNext ()) return null;
-			String last = scanner.next ();
-			String first = scanner.next ();
-			return new Name (last, first);
-	}
-	public String getInitials() {
-		return Character.toString(first.charAt(0)) +"."+ Character.toString(last.charAt(0)) +".";
+	public boolean equals(PhoneNumber num){
+		return number.equals(num.number);
 	}
 	
-	private String first, last;
-			
+	public static PhoneNumber read(Scanner scanner){
+		if(!scanner.hasNext()) return null;
+		String number = scanner.next();
+		return new PhoneNumber(number);
+	}
+				
 }
