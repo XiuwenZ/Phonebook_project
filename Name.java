@@ -1,6 +1,4 @@
-class PhoneNumber{
-	private String number;
-	
+class PhoneNumber{	
 	public PhoneNumber(String phoneNum){
 		this.number = phoneNum;
 	}
@@ -18,6 +16,6 @@ class PhoneNumber{
 		String number = scanner.next();
 		return new PhoneNumber(number);
 	}
-				
+	private String number;
 }
   
