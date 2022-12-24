@@ -1,5 +1,4 @@
 class PhonebookEntry {
-
 	public PhonebookEntry(Name name, ArrayList<NewPhoneNumber> all_numbers){
 		this.name = name;
 		this.all_numbers = all_numbers;
@@ -16,8 +15,6 @@ class PhonebookEntry {
 	public String toString() {
 		 return name + "'s phone numbers: " + all_numbers;
 	}
-
-	
 	public static PhonebookEntry read(Scanner scanner){
 		try {
 			if (!scanner.hasNext()) return null;
